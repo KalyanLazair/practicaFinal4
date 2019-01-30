@@ -14,6 +14,8 @@ public class Ventana extends javax.swing.JFrame {
     //Creamos un objeto Conexiones para poder llamar a la clase Conexiones y obtener los métodos
     //que nos van a permitir insertar, modificar, borrar y acceder a los datos de la BBDD.
     Conexiones gesConn = new Conexiones();
+    //Booleano de instancia que nos va a servir para cambiar el botón de insertar a borrar y para ejecutar la función de borrar.
+    boolean cambiaBoton=false;
     
     public Ventana() {
         initComponents();
@@ -21,6 +23,11 @@ public class Ventana extends javax.swing.JFrame {
         tablaPerros.setModel(gesConn.consultaPerros());
         tablaSocios.setModel(gesConn.consultaProp());
         tablaClub.setModel(gesConn.consultaClub());
+        
+        //Los botones de modificar están iinvisibles.
+        botonMP.setVisible(false);
+        botonMS.setVisible(false);
+        botonMC.setVisible(false);
         
     }
 
@@ -121,6 +128,11 @@ public class Ventana extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaPerros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tablaPerrosMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaPerros);
 
         desplegablePerro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -178,6 +190,11 @@ public class Ventana extends javax.swing.JFrame {
 
         botonMP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMP.setText("Modificar");
+        botonMP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonMPMousePressed(evt);
+            }
+        });
 
         botonIP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIP.setText("Insertar");
@@ -254,7 +271,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cajaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerrosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,6 +356,11 @@ public class Ventana extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tablaSociosMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaSocios);
 
         jTextField14.setBackground(new java.awt.Color(0, 51, 153));
@@ -371,6 +393,11 @@ public class Ventana extends javax.swing.JFrame {
 
         botonMS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMS.setText("Modificar");
+        botonMS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonMSMousePressed(evt);
+            }
+        });
 
         botonIS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIS.setText("Insertar");
@@ -379,8 +406,6 @@ public class Ventana extends javax.swing.JFrame {
                 botonISMousePressed(evt);
             }
         });
-
-        jLabel16.setText("jLabel16");
 
         javax.swing.GroupLayout panelPropLayout = new javax.swing.GroupLayout(panelProp);
         panelProp.setLayout(panelPropLayout);
@@ -407,36 +432,41 @@ public class Ventana extends javax.swing.JFrame {
                                 .addGap(61, 61, 61)
                                 .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelPropLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPropLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelPropLayout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPropLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelPropLayout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(panelPropLayout.createSequentialGroup()
+                                        .addComponent(cajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(52, 52, 52)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelPropLayout.createSequentialGroup()
+                                        .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPropLayout.createSequentialGroup()
+                                        .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelPropLayout.createSequentialGroup()
+                                        .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 314, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPropLayout.setVerticalGroup(
             panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,19 +483,19 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29)
-                    .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -530,6 +560,11 @@ public class Ventana extends javax.swing.JFrame {
 
         botonMC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMC.setText("Modificar");
+        botonMC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonMCMousePressed(evt);
+            }
+        });
 
         botonIC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIC.setText("Insertar");
@@ -538,8 +573,6 @@ public class Ventana extends javax.swing.JFrame {
                 botonICMousePressed(evt);
             }
         });
-
-        jLabel17.setText("jLabel17");
 
         javax.swing.GroupLayout panelClubLayout = new javax.swing.GroupLayout(panelClub);
         panelClub.setLayout(panelClubLayout);
@@ -580,7 +613,7 @@ public class Ventana extends javax.swing.JFrame {
                                 .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cajaNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(panelClubLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -619,7 +652,7 @@ public class Ventana extends javax.swing.JFrame {
                     .addGroup(panelClubLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(cajaTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
                 .addGap(35, 35, 35)
                 .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
@@ -636,7 +669,7 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -739,27 +772,66 @@ public class Ventana extends javax.swing.JFrame {
         String deporte= cajaDeporte.getText();
         String grado= cajaGrado.getText();
         String prop= cajaProp.getText();
-        //Guardamos el valor que nos devuelve la función en un int para poder mostrar el mensaje en función de
-        //si se ha insertado correctamente el perro o no.
-        int ejecutaInsert=gesConn.insertaPerro(chip, nombre, afijo, raza, sexo, deporte, nac, grado, prop);
-        //Si el perro se inserta correctamente, llamamos de nuevo a consultaPerros para que nos saque los datos por pantalla refrescados.
-        if(ejecutaInsert==1){
-           mensajePerro.setText("El perro se ha insertado correctamente.");
-           tablaPerros.setModel(gesConn.consultaPerros());
-           //Ponemos las cajas con sus valores a cero.
-           cajaChip.setText("");
-           cajaNombreP.setText("");
-           cajaAfijo.setText("");
-           cajaRaza.setText("");
-           cajaSexo.setText("");
-           cajaNac.setText("");
-           cajaDeporte.setText("");
-           cajaGrado.setText("");
-           cajaProp.setText("");
+        
+           //Vamos a comprobar el valor del booleano. Insertará o borrará dependiendo de ese valor.
+           if(cambiaBoton==false){
+               //Guardamos el valor que nos devuelve la función en un int para poder mostrar el mensaje en función de
+               //si se ha insertado correctamente el perro o no.
+               int ejecutaInsert=gesConn.insertaPerro(chip, nombre, afijo, raza, sexo, deporte, nac, grado, prop);
+   
+               //Si el perro se inserta correctamente, llamamos de nuevo a consultaPerros para que nos saque los datos por pantalla refrescados.
+                if(ejecutaInsert==1){
+                      mensajePerro.setText("El perro se ha insertado correctamente.");
+                      tablaPerros.setModel(gesConn.consultaPerros());
+                     //Ponemos las cajas con sus valores a cero.
+                     cajaChip.setText("");
+                     cajaNombreP.setText("");
+                     cajaAfijo.setText("");
+                     cajaRaza.setText("");
+                     cajaSexo.setText("");
+                     cajaNac.setText("");
+                     cajaDeporte.setText("");
+                     cajaGrado.setText("");
+                     cajaProp.setText("");
            
-        }else if(ejecutaInsert==-1){
-           mensajePerro.setText("No se ha podido insertar el registro en la Base de Datos!");
-        }
+                }else if(ejecutaInsert==-1){
+                    mensajePerro.setText("No se ha podido insertar el registro en la Base de Datos!");
+                }
+           }else{
+               int borraRegistro= gesConn.borraPerro(chip);
+               
+               if(borraRegistro==1){
+                   mensajePerro.setText("El registro se ha borrado correctamente.");
+                   tablaPerros.setModel(gesConn.consultaPerros());
+                     //Ponemos las cajas con sus valores a cero.
+                     cajaChip.setText("");
+                     cajaNombreP.setText("");
+                     cajaAfijo.setText("");
+                     cajaRaza.setText("");
+                     cajaSexo.setText("");
+                     cajaNac.setText("");
+                     cajaDeporte.setText("");
+                     cajaGrado.setText("");
+                     cajaProp.setText("");
+                     //Ponemos el booleano a false.
+                     cambiaBoton=false;
+               }else if(borraRegistro==-1){
+                   mensajePerro.setText("No se ha podido borrar el registro de la Base de Datos!");
+                   //Ponemos las cajas con sus valores a cero.
+                     cajaChip.setText("");
+                     cajaNombreP.setText("");
+                     cajaAfijo.setText("");
+                     cajaRaza.setText("");
+                     cajaSexo.setText("");
+                     cajaNac.setText("");
+                     cajaDeporte.setText("");
+                     cajaGrado.setText("");
+                     cajaProp.setText("");
+                     //Ponemos el booleano a false. De esta manera, funcione o no funcione el borrado, el booleano no se queda con
+                     //valor a true y el usuario está obligado a clickear de nuevo en la tabla para iniciar de nuevo la función.
+                     cambiaBoton=false;
+               }
+           }
     }//GEN-LAST:event_botonIPMousePressed
 
     private void botonISMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonISMousePressed
@@ -771,22 +843,55 @@ public class Ventana extends javax.swing.JFrame {
         String direccion= cajaDirS.getText();
         int telefono= Integer.valueOf(cajaTelefonoS.getText());
         int club= Integer.valueOf(cajaClub.getText());
-        //Guardamos el valor que nos devuelve la función en una variable int.
-        int ejecutaInsert= gesConn.insertaProp(dni, nombre, apellidos, direccion, telefono, club);
-        //Si se ha ejecutado correctamente.
-        if(ejecutaInsert==1){
-            jLabel16.setText("El usuario se ha insertado correctamente.");
-            tablaSocios.setModel(gesConn.consultaProp());
-            //Ponemos las cajas con sus valores a cero.
-            cajaDNI.setText("");
-            cajaNombreS.setText("");
-            cajaApellidoS.setText("");
-            cajaDirS.setText("");
-            cajaTelefonoS.setText("");
-            cajaClub.setText("");
+        
+        
+        //Comprobamos el valor del booleano. Para saber si insertamos (false) o borramos (true).
+        if(cambiaBoton==false){
+            //Guardamos el valor que nos devuelve la función en una variable int.
+            int ejecutaInsert= gesConn.insertaProp(dni, nombre, apellidos, direccion, telefono, club);
+            //Si se ha ejecutado correctamente.
+             if(ejecutaInsert==1){
+                    jLabel16.setText("El usuario se ha insertado correctamente.");
+                    tablaSocios.setModel(gesConn.consultaProp());
+                    //Ponemos las cajas con sus valores a cero.
+                    cajaDNI.setText("");
+                    cajaNombreS.setText("");
+                    cajaApellidoS.setText("");
+                    cajaDirS.setText("");
+                    cajaTelefonoS.setText("");
+                    cajaClub.setText("");
             
-        }else if(ejecutaInsert==-1){
-            jLabel16.setText("No se ha podido insertar el registro en la Base de Datos!");
+              }else if(ejecutaInsert==-1){
+                    jLabel16.setText("No se ha podido insertar el registro en la Base de Datos!");
+              }
+        }else{
+           int borraRegistro=gesConn.borraProp(dni);
+           if(borraRegistro==1){
+                jLabel16.setText("El registro se ha borrado correctamente.");
+                tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla.
+                    //Ponemos las cajas con sus valores a cero.
+                    cajaDNI.setText("");
+                    cajaNombreS.setText("");
+                    cajaApellidoS.setText("");
+                    cajaDirS.setText("");
+                    cajaTelefonoS.setText("");
+                    cajaClub.setText("");
+                 //Ponemos el booleano a false.
+                 cambiaBoton=false;
+                
+           }else if(borraRegistro==-1){
+                jLabel16.setText("No se ha podido borrar el registro.");
+                //Ponemos las cajas con sus valores a cero.
+                    cajaDNI.setText("");
+                    cajaNombreS.setText("");
+                    cajaApellidoS.setText("");
+                    cajaDirS.setText("");
+                    cajaTelefonoS.setText("");
+                    cajaClub.setText("");
+                 //Ponemos el booleano a false. Esto está pensado para que el usuario tenga que clickear en la tabla otra vez.
+                 //Y el booleano no se quede con valor positivo.
+                 cambiaBoton=false;
+           }
         }
     }//GEN-LAST:event_botonISMousePressed
 
@@ -796,25 +901,59 @@ public class Ventana extends javax.swing.JFrame {
         String nombre= cajaNombreC.getText();
         String direccion= cajaDirC.getText();
         int telefono= Integer.valueOf(cajaTelefonoC.getText());
-        //guardamos el valor que nos devuelve en una variable int.
-        int ejecutaInsert=gesConn.insertaClub(CIF, nombre, direccion, telefono);
-        //Comprobamos si la ejecución se ha hecho correctamente.
-        if(ejecutaInsert==1){
-           jLabel17.setText("El club se ha insertado correctamente.");
-           tablaClub.setModel(gesConn.consultaClub());
-           //Ponemos las cajas en vacío de nuevo.
-           cajaCif.setText("");
-           cajaNombreC.setText("");
-           cajaDirC.setText("");
-           cajaTelefonoC.setText("");
-        }else if(ejecutaInsert==-1){
-           jLabel17.setText("No se ha podido insertar el registro en la Base de Datos!");
-        }
         
+        //Vamos a comprobar el valor del booleano. Si es FALSE es un botón de insertar. Si es TRUE es un botón de borrar registro.
+        if(cambiaBoton==false){
+            //guardamos el valor que nos devuelve en una variable int.
+            int ejecutaInsert=gesConn.insertaClub(CIF, nombre, direccion, telefono);
+            //Comprobamos si la ejecución se ha hecho correctamente.
+            if(ejecutaInsert==1){
+                jLabel17.setText("El club se ha insertado correctamente.");
+                tablaClub.setModel(gesConn.consultaClub());
+                //Ponemos las cajas en vacío de nuevo.
+                cajaCif.setText("");
+                cajaNombreC.setText("");
+                cajaDirC.setText("");
+                cajaTelefonoC.setText("");
+            }else if(ejecutaInsert==-1){
+                jLabel17.setText("No se ha podido insertar el registro en la Base de Datos!");
+            }
+        }else{
+            int borraRegistro=gesConn.borraClub(CIF);
+            
+            if(borraRegistro==1){
+                jLabel17.setText("El registro se ha borrado correctamente.");
+                tablaClub.setModel(gesConn.consultaClub()); //Hacemos un reload de la tabla.
+                //Ponemos las cajas en vacío de nuevo.
+                cajaCif.setText("");
+                cajaNombreC.setText("");
+                cajaDirC.setText("");
+                cajaTelefonoC.setText("");
+                //La variable booleana la ponemos a false.
+                cambiaBoton=false;
+            }else if(borraRegistro==-1){
+                jLabel17.setText("No se ha podido borrar el registro.");
+                //Ponemos las cajas en vacío de nuevo.
+                cajaCif.setText("");
+                cajaNombreC.setText("");
+                cajaDirC.setText("");
+                cajaTelefonoC.setText("");
+                //La variable booleana la ponemos a false. El usuario tiene que volver a clickear en la tabla y el booleano
+                //no se queda a true una vez pulsado el botón.
+                cambiaBoton=false;
+            } 
+        }
     }//GEN-LAST:event_botonICMousePressed
 
     private void tablaClubMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClubMousePressed
-        //Método que nos va a permitir obtener los datos directamente de la tabla y sacarlos por los jTextFields.
+        //Método que nos va a permitir obtener los datos directamente de la tabla Club y sacarlos por los jTextFields.
+        //Habilitamos el botón de modificar. Cambiamos el texto del botón Inserta Club.
+        botonMC.setVisible(true);
+        botonIC.setText("Borrar");
+        //Valor de booleano a true para poder acceder a los comandos que nos permiten borrar registros al presionar el botón de "editar"
+        //reconfigurado a "borrar".
+        cambiaBoton=true;
+        
         int row= tablaClub.getSelectedRow(); //Obtenemos la tupla seleccionada.
         //Con ella obtenemos los valores de las diferentes celdas.
         String CIF= tablaClub.getModel().getValueAt(row, 0).toString();
@@ -827,6 +966,175 @@ public class Ventana extends javax.swing.JFrame {
         cajaDirC.setText(direccion);
         cajaTelefonoC.setText(telefono);
     }//GEN-LAST:event_tablaClubMousePressed
+
+    private void tablaPerrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPerrosMousePressed
+        //Método que nos va a permitir obtener los datos directamente de la tabla Perro y sacarlos por los jTextFields.
+        //Hacemos visible el botón de modificar. Cambiamos el texto y la funcionalidad (con el booleano) del botón insertar.
+        botonMP.setVisible(true);
+        botonIP.setText("Borrar");
+        //Valor de booleano a true para poder acceder a los comandos que nos permiten borrar registros al presionar el botón de "editar"
+        //reconfigurado a "borrar".
+        cambiaBoton=true;
+        
+        int row= tablaPerros.getSelectedRow(); //Obtenemos la posición de la tupla seleccionada.
+       //Vamos a sacar el nombre y apellidos del propietario para poder hacer una consulta sobre su tabla y sacar el DNI.
+        String nombreApellidos= tablaPerros.getModel().getValueAt(row,8).toString();
+        //Separamos el nombre y el apellido usando el espacio como índice para separarlos y los guardamos en variables separadas.
+        int espacio=nombreApellidos.indexOf(" ");
+        String nombreProp=nombreApellidos.substring(0,espacio);
+        String apellidoProp=nombreApellidos.substring(espacio+1);
+        //Hacemos una consulta a la base de datos pasándole como variables el nombre y el apellido del propietario.
+        String dniProp=gesConn.dniProp(nombreProp, apellidoProp);
+        
+        //Vamos a sacar los valores de las celdas en variables string. 
+        String chip= tablaPerros.getModel().getValueAt(row,0).toString();
+        String nombre= tablaPerros.getModel().getValueAt(row,1).toString();
+        String afijo= tablaPerros.getModel().getValueAt(row,2).toString();
+        String raza= tablaPerros.getModel().getValueAt(row,3).toString();
+        String sexo= tablaPerros.getModel().getValueAt(row,4).toString();
+        String nac= tablaPerros.getModel().getValueAt(row,5).toString();
+        String deporte= tablaPerros.getModel().getValueAt(row,6).toString();
+        String grado= tablaPerros.getModel().getValueAt(row,7).toString();
+
+        //Vamos a situar estos valores dentro de su correspondiente textfield.
+        cajaChip.setText(chip);
+        cajaNombreP.setText(nombre);
+        cajaAfijo.setText(afijo);
+        cajaRaza.setText(raza);
+        cajaSexo.setText(sexo);
+        cajaNac.setText(nac);
+        cajaDeporte.setText(deporte);
+        cajaGrado.setText(grado);
+        cajaProp.setText(dniProp);
+    }//GEN-LAST:event_tablaPerrosMousePressed
+
+    private void tablaSociosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaSociosMousePressed
+        //Método para sacar los valores de propietario directamente de la tabla a través de los jTextFields.
+        //Habilitamos el botón de modificar. Cambiamos el texto del botón insertar.
+        botonMS.setVisible(true);
+        botonIS.setText("Borrar");
+        //Valor de booleano a true para poder acceder a los comandos que nos permiten borrar registros al presionar el botón de "editar"
+        //reconfigurado a "borrar".
+        cambiaBoton=true;
+        
+        int row= tablaSocios.getSelectedRow(); //Obtenemos la posición de la tupla seleccionada.
+        //Obtenemos el nombre del club.
+        String nombreClub= tablaSocios.getModel().getValueAt(row,5).toString();
+        String cifClub= gesConn.cifClub(nombreClub);
+        
+        //Sacamos los valores y los guardamos en variables.
+        
+        String dni= tablaSocios.getModel().getValueAt(row,0).toString();
+        String nombre = tablaSocios.getModel().getValueAt(row,1).toString();
+        String apellido= tablaSocios.getModel().getValueAt(row,2).toString();
+        String direccion= tablaSocios.getModel().getValueAt(row,3).toString();
+        String telefono= tablaSocios.getModel().getValueAt(row,4).toString();
+        
+        //Vamos a sacar los valores a través de los textfields.
+        cajaDNI.setText(dni);
+        cajaNombreS.setText(nombre);
+        cajaApellidoS.setText(apellido);
+        cajaDirS.setText(direccion);
+        cajaTelefonoS.setText(telefono);
+        cajaClub.setText(cifClub);
+    }//GEN-LAST:event_tablaSociosMousePressed
+
+    private void botonMPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMPMousePressed
+        //Botón de modificar perro. Lo primero que vamos a hacer es poner el booleano a false.
+        cambiaBoton=false;
+        //Obtenemos de los textfields los valores que vamos a modificar.
+        int chip = Integer.valueOf(cajaChip.getText());
+        String nombre = cajaNombreP.getText();
+        String afijo= cajaAfijo.getText();
+        String raza= cajaRaza.getText();
+        String sexo= cajaSexo.getText();
+        String nac= cajaNac.getText();
+        String deporte= cajaDeporte.getText();
+        String grado= cajaGrado.getText();
+        String prop= cajaProp.getText();
+        
+        //Obtenemos también el valor del método de modificarPerro.
+        int ejecutaMod= gesConn.modificaPerro(chip, nombre, afijo, raza, sexo, nac, deporte, grado, prop);
+        //Comprobamos si se ha modificado correctamente. 
+        if(ejecutaMod==1){
+           mensajePerro.setText("El registro se ha modificado correctamente.");
+           tablaPerros.setModel(gesConn.consultaPerros());
+           //Ponemos las cajas con sus valores a cero.
+           cajaChip.setText("");
+           cajaNombreP.setText("");
+           cajaAfijo.setText("");
+           cajaRaza.setText("");
+           cajaSexo.setText("");
+           cajaNac.setText("");
+           cajaDeporte.setText("");
+           cajaGrado.setText("");
+           cajaProp.setText("");
+           //Ocultamos de nuevo el botón.
+           botonMP.setVisible(false);
+        }else if(ejecutaMod==-1){
+           mensajePerro.setText("No se ha podido modificar el registro. Compruebe los valores e inténtelo de nuevo.");
+        }
+    }//GEN-LAST:event_botonMPMousePressed
+
+    private void botonMSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMSMousePressed
+        //MODIFICAR Propietario. El valor del booleano lo ponemos de nuevo a false.
+        cambiaBoton= false;
+        //Sacamos los valores de los jTextArea.
+        String dni= cajaDNI.getText();
+        String nombre= cajaNombreS.getText();
+        String apellidos= cajaApellidoS.getText();
+        String direccion= cajaDirS.getText();
+        int telefono= Integer.valueOf(cajaTelefonoS.getText());
+        int club= Integer.valueOf(cajaClub.getText());
+        
+        //Guardamos el valor del método en una variable int.
+        int ejecutaMod= gesConn.modificaProp(dni, nombre, apellidos, direccion, telefono, club);
+        
+        if(ejecutaMod==1){
+            jLabel16.setText("El registro se ha modificado correctamente.");
+            tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla.
+            //Ponemos las cajas con sus valores a cero.
+            cajaDNI.setText("");
+            cajaNombreS.setText("");
+            cajaApellidoS.setText("");
+            cajaDirS.setText("");
+            cajaTelefonoS.setText("");
+            cajaClub.setText("");
+            //Ocultamos el botón
+            botonMS.setVisible(false);
+        }else if(ejecutaMod==-1){
+           jLabel16.setText("No se ha podido modificar el registro.");
+        }
+        
+    }//GEN-LAST:event_botonMSMousePressed
+
+    private void botonMCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMCMousePressed
+        //BOTÓN DE MODIFICAR DATOS DE CLUB
+        //Lo primero es poner el booleano a false.
+        cambiaBoton= false;
+        //Sacamos los datos de las cajas.
+        int CIF= Integer.valueOf(cajaCif.getText());
+        String nombre= cajaNombreC.getText();
+        String direccion= cajaDirC.getText();
+        int telefono= Integer.valueOf(cajaTelefonoC.getText());
+        
+        //Ejecutamos la función y guardamos su valor en una variable int.
+        int ejecutaMod= gesConn.modificaClub(CIF, nombre, direccion, telefono);
+        
+        if(ejecutaMod==1){
+              jLabel17.setText("El registro se ha modificado correctamente.");
+              tablaClub.setModel(gesConn.consultaClub());
+              //Ponemos las cajas en vacío de nuevo.
+              cajaCif.setText("");
+              cajaNombreC.setText("");
+              cajaDirC.setText("");
+              cajaTelefonoC.setText("");
+              //Ocultamos de nuevo el botón.
+              botonMC.setVisible(false);
+        }else if(ejecutaMod==-1){
+             jLabel17.setText("No se ha podido modificar el registro.");
+        }
+    }//GEN-LAST:event_botonMCMousePressed
 
     /**
      * @param args the command line arguments

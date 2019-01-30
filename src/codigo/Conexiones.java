@@ -154,6 +154,43 @@ public class Conexiones {
                  return -1;
              }
          }
+         
+     //BORRA PERRO DE LA TABLA PERRO
+         
+         public int borraPerro(int chip){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("DELETE FROM perro WHERE chip="+chip+"");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+         
+         //MODIFICA PERRO.
+         
+         public int modificaPerro(int chip, String nombre, String afijo, String raza, String sexo, String nac, String deporte, String grado, String prop){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("UPDATE perro SET chip="+chip+", nombre='"+nombre+"', afijo='"+afijo+"', raza='"+raza+"', sexo='"+sexo+"', nacimiento='"+nac+"', deporte='"+deporte+"', grado='"+grado+"', propietario='"+prop+"' WHERE chip="+chip+"");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+         
     
     ////////////////////////////////////////////////////////PROPIETARIO/////////////////////////////////////////////////////////
          
@@ -230,6 +267,36 @@ public class Conexiones {
   
      }
      
+     //Consulta para sacar el DNI del propietario con intención de poder modificarlo en la tabla perro.
+     
+     public String dniProp(String nombre, String apellido){
+
+           //Variable donde vamos a guardar el valor obtenido de la query.
+           String dni = null;
+            
+         try{
+             
+            //Creamos el statement para poder ejecutar la consulta.
+            Statement sta = conn.createStatement();
+           //Ejecutamos la consulta.
+            ResultSet rs = sta.executeQuery("SELECT dni FROM propietario WHERE nombre='"+nombre+"' AND apellidos='"+apellido+"'");
+            //Devolvemos el resultado de la query. Hay que procesarlo en un while porque no me lo cogía directamente, aunque
+            //fuese un único valor.
+            while(rs.next()){
+                dni=rs.getString("dni");
+            } 
+            //Cerramos el statement y el resultset.
+            rs.close();
+            sta.close();
+            //Devolvemos el string con el valor obtenido de la consulta.
+            return dni;
+            
+         }catch(SQLException ex){
+            return "ERROR!";
+         }
+          
+     }
+     
      //INSERTA NUEVO PROPIETARIO/SOCIO EN LA TABLA PROPIETARIO.
      
       public int insertaProp(String DNI, String nombre, String apellidos, String direccion, int telefono, int club){
@@ -239,6 +306,42 @@ public class Conexiones {
                  Statement sta = conn.createStatement();
                  //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
                  sta.executeUpdate("INSERT INTO propietario VALUES ('"+DNI+"', '"+nombre+"','"+apellidos+"','"+direccion+"',"+telefono+","+club+")");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+      
+      //BORRA SOCIO DE LA TABLA PROPIETARIO
+      
+      public int borraProp(String dni){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("DELETE FROM propietario WHERE dni="+dni+"");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+      
+      //MODIFICA SOCIO
+      
+       public int modificaProp(String dni, String nombre, String apellido, String dir, int telefono, int club){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("UPDATE propietario SET dni='"+dni+"', nombre='"+nombre+"', apellidos='"+apellido+"', direccion='"+dir+"', telefono="+telefono+", club="+club+" WHERE dni='"+dni+"'");
                  //Cerramos el statement
                  sta.close();
                  //Si se ha ejecutado correctamente devuelve 1.
@@ -320,6 +423,34 @@ public class Conexiones {
   
      }
     
+    //Vamos a obtener el CIF de un club usando su nombre como parámetro de entrada.
+    public String cifClub(String nombre){
+           //Variable donde vamos a guardar el valor obtenido de la query.
+           String cif = null;
+            
+         try{
+             
+            //Creamos el statement para poder ejecutar la consulta.
+            Statement sta = conn.createStatement();
+           //Ejecutamos la consulta.
+            ResultSet rs = sta.executeQuery("SELECT cif FROM club WHERE nombre='"+nombre+"'");
+            //Devolvemos el resultado de la query. Hay que procesarlo en un while porque no me lo cogía directamente, aunque
+            //fuese un único valor.
+            while(rs.next()){
+                cif=rs.getString("cif");
+            } 
+            //Cerramos el statement y el resultset.
+            rs.close();
+            sta.close();
+            //Devolvemos el string con el valor obtenido de la consulta.
+            return cif;
+            
+         }catch(SQLException ex){
+            return "ERROR!";
+         }
+          
+     }
+    
     //INSERCIÖN DE UN NUEVO CLUB
     
      public int insertaClub(int CIF, String nombre, String direccion, int telefono){
@@ -329,6 +460,42 @@ public class Conexiones {
                  Statement sta = conn.createStatement();
                  //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
                  sta.executeUpdate("INSERT INTO club VALUES ("+CIF+", '"+nombre+"','"+direccion+"',"+telefono+")");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+     
+     //BORRAR CLUB
+     
+     public int borraClub(int CIF){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("DELETE FROM club WHERE cif="+CIF+"");
+                 //Cerramos el statement
+                 sta.close();
+                 //Si se ha ejecutado correctamente devuelve 1.
+                 return 1;
+             }catch(SQLException ex){               
+                 return -1;
+             }
+         }
+     
+     //MODIFICAR CLUB
+     
+     public int modificaClub(int CIF, String nombre, String direccion, int telefono){
+         
+             try{
+                 //Creamos un statement.
+                 Statement sta = conn.createStatement();
+                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 sta.executeUpdate("UPDATE club SET cif="+CIF+", nombre='"+nombre+"', direccion='"+direccion+"', telefono="+telefono+" WHERE cif="+CIF+"");
                  //Cerramos el statement
                  sta.close();
                  //Si se ha ejecutado correctamente devuelve 1.
