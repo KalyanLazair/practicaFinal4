@@ -17,9 +17,10 @@ public class Ventana extends javax.swing.JFrame {
     
     public Ventana() {
         initComponents();
-        
-       // panelPerros.isShowing();
-        
+        //Sacamos por las tablas los registros en el momento en que el usuario abra el programa.
+        tablaPerros.setModel(gesConn.consultaPerros());
+        tablaSocios.setModel(gesConn.consultaProp());
+        tablaClub.setModel(gesConn.consultaClub());
         
     }
 
@@ -61,6 +62,7 @@ public class Ventana extends javax.swing.JFrame {
         botonMP = new javax.swing.JButton();
         botonIP = new javax.swing.JButton();
         jTextField12 = new javax.swing.JTextField();
+        mensajePerro = new javax.swing.JLabel();
         panelProp = new javax.swing.JPanel();
         desplegableSocio = new javax.swing.JComboBox<>();
         cajaBuscaS = new javax.swing.JTextField();
@@ -83,8 +85,9 @@ public class Ventana extends javax.swing.JFrame {
         jTextField44 = new javax.swing.JTextField();
         botonMS = new javax.swing.JButton();
         botonIS = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
         panelClub = new javax.swing.JPanel();
-        desplegableCub = new javax.swing.JComboBox<>();
+        desplegableClub = new javax.swing.JComboBox<>();
         cajaBuscaClub = new javax.swing.JTextField();
         botonBC = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -101,6 +104,7 @@ public class Ventana extends javax.swing.JFrame {
         jTextField56 = new javax.swing.JTextField();
         botonMC = new javax.swing.JButton();
         botonIC = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,10 +128,9 @@ public class Ventana extends javax.swing.JFrame {
 
         botonBP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBP.setText("Buscar");
-
-        cajaBuscaPerro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaBuscaPerroActionPerformed(evt);
+        botonBP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBPMousePressed(evt);
             }
         });
 
@@ -178,6 +181,11 @@ public class Ventana extends javax.swing.JFrame {
 
         botonIP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIP.setText("Insertar");
+        botonIP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonIPMousePressed(evt);
+            }
+        });
 
         jTextField12.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -240,7 +248,9 @@ public class Ventana extends javax.swing.JFrame {
                             .addGroup(panelPerrosLayout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(botonMP, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(605, 605, 605)))
+                                .addGap(49, 49, 49)
+                                .addComponent(mensajePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cajaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -296,10 +306,12 @@ public class Ventana extends javax.swing.JFrame {
                             .addComponent(cajaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonMP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonMP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mensajePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -310,6 +322,11 @@ public class Ventana extends javax.swing.JFrame {
 
         botonBS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBS.setText("Buscar");
+        botonBS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBSMousePressed(evt);
+            }
+        });
 
         tablaSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -357,6 +374,13 @@ public class Ventana extends javax.swing.JFrame {
 
         botonIS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIS.setText("Insertar");
+        botonIS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonISMousePressed(evt);
+            }
+        });
+
+        jLabel16.setText("jLabel16");
 
         javax.swing.GroupLayout panelPropLayout = new javax.swing.GroupLayout(panelProp);
         panelProp.setLayout(panelPropLayout);
@@ -378,7 +402,9 @@ public class Ventana extends javax.swing.JFrame {
                                 .addGap(220, 220, 220))
                             .addGroup(panelPropLayout.createSequentialGroup()
                                 .addComponent(botonMS, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(627, 627, 627)
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
                                 .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelPropLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -442,22 +468,27 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonMS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonMS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jLabel10.getAccessibleContext().setAccessibleName("DNI;");
-
         jTabbedPane1.addTab("Socios", panelProp);
 
-        desplegableCub.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        desplegableCub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CIF", "Nombre" }));
+        desplegableClub.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        desplegableClub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CIF", "Nombre" }));
 
         botonBC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBC.setText("Buscar");
+        botonBC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBCMousePressed(evt);
+            }
+        });
 
         tablaClub.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -470,6 +501,11 @@ public class Ventana extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaClub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tablaClubMousePressed(evt);
+            }
+        });
         jScrollPane5.setViewportView(tablaClub);
 
         jTextField46.setBackground(new java.awt.Color(0, 51, 153));
@@ -497,6 +533,13 @@ public class Ventana extends javax.swing.JFrame {
 
         botonIC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIC.setText("Insertar");
+        botonIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonICMousePressed(evt);
+            }
+        });
+
+        jLabel17.setText("jLabel17");
 
         javax.swing.GroupLayout panelClubLayout = new javax.swing.GroupLayout(panelClub);
         panelClub.setLayout(panelClubLayout);
@@ -511,7 +554,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelClubLayout.createSequentialGroup()
                         .addGap(203, 203, 203)
-                        .addComponent(desplegableCub, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(desplegableClub, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(cajaBuscaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
@@ -539,8 +582,10 @@ public class Ventana extends javax.swing.JFrame {
                                 .addComponent(cajaNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(panelClubLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(57, 57, 57)
                 .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
@@ -550,7 +595,7 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(panelClubLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desplegableCub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(desplegableClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cajaBuscaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -577,11 +622,12 @@ public class Ventana extends javax.swing.JFrame {
                         .addGap(0, 2, Short.MAX_VALUE)))
                 .addGap(35, 35, 35)
                 .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
                 .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Club", panelClub);
@@ -600,9 +646,187 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cajaBuscaPerroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaBuscaPerroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaBuscaPerroActionPerformed
+    private void botonBPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBPMousePressed
+        //Botón de búsqueda de perro donde se va a ejecutar una consulta en función de la caja seleccionada.
+        String cajaSeleccionada=(String) desplegablePerro.getSelectedItem();
+        String opcion="%"+cajaBuscaPerro.getText()+"%";
+        String consulta="";
+        
+        //Si el textarea no está vacío, ejecutamos una consulta con prepared Statement.
+        if(!cajaBuscaPerro.getText().equals("")){
+             if(cajaSeleccionada.equals("Chip")){
+                 //Le pasamos la consulta como parámetro de entrada a la función.
+                 consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND chip LIKE ?";
+             }else if(cajaSeleccionada.equals("Nombre")){
+                 consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND p.nombre LIKE ?";
+             }else if(cajaSeleccionada.equals("Afijo")){
+                 consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND afijo LIKE ?";
+             }else if(cajaSeleccionada.equals("Raza")){
+                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND raza LIKE ?";
+             }else if(cajaSeleccionada.equals("Deporte")){
+                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND deporte LIKE ?";
+             }else if(cajaSeleccionada.equals("Grado")){
+                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND grado LIKE ?";
+             }else if(cajaSeleccionada.equals("Sexo")){
+                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND sexo LIKE ?";
+             }
+            //Ejecutamos la función y lo guardamos en la tabla.
+            tablaPerros.setModel(gesConn.consultaPerroPS(consulta, opcion));
+            //Reseteamos el textbox
+            cajaBuscaPerro.setText("");
+        }else{
+            //Si nos encontramos con una cadena vacía en el textbox, ejecuta una consulta y muestra todos los resultados de la bbdd
+            //en la tabla.
+            tablaPerros.setModel(gesConn.consultaPerros());
+        }
+    }//GEN-LAST:event_botonBPMousePressed
+
+    private void botonBSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBSMousePressed
+         //Botón cosultas Prepared Statement en la tabla propietarios.
+         String cajaSeleccionada=(String) desplegableSocio.getSelectedItem(); //Obtenemos cual de las opciones ha sido seleccionada.
+         String consulta="";
+         String parametro= "%" + cajaBuscaS.getText() + "%";
+         
+         //Si la caja no está vacía, ejecuta la consulta con Prepared Statement. En caso contrario nos muestra todos los resultados.
+         if(!cajaBuscaS.getText().equals("")){
+             //La consulta dependerá de la caja seleccionada
+             if(cajaSeleccionada.equals("DNI")){
+                consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND DNI LIKE ?";
+             }else if(cajaSeleccionada.equals("Nombre")){
+                 consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND pr.nombre LIKE ?";
+             }else if(cajaSeleccionada.equals("Apellidos")){
+                 consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND apellidos LIKE ?";
+             }else if(cajaSeleccionada.equals("Club")){
+                 consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND c.nombre LIKE ?";
+             }
+            //Sacamos el resultado por la tabla.
+             tablaSocios.setModel(gesConn.consultaPropPR(consulta, parametro));
+             //Reseteamos la caja.
+             cajaBuscaS.setText("");
+         }else{
+             tablaSocios.setModel(gesConn.consultaProp());
+         }
+         
+    }//GEN-LAST:event_botonBSMousePressed
+
+    private void botonBCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBCMousePressed
+        //Botón de búsqueda de Club por prepared Statement.
+        String cajaSeleccionada = (String) desplegableClub.getSelectedItem(); //Casteamos a String porque jComboBox no nos genera un String.
+        String consulta="";
+        String parametro="%"+cajaBuscaClub.getText()+"%";
+        
+         if(!cajaBuscaClub.getText().equals("")){ //Si la caja de texto no está vacía, ejecuta.
+            if(cajaSeleccionada.equals("CIF")){
+                consulta="SELECT * FROM club WHERE CIF LIKE ?";
+            }else if(cajaSeleccionada.equals("Nombre")){
+                consulta="SELECT * FROM club WHERE nombre LIKE ?";
+            }
+            tablaClub.setModel(gesConn.consultaClubPS(consulta, parametro));
+            cajaBuscaClub.setText(""); //Vacíamos la caja y la volvemos a poner en cadena vacía
+         }else{ //Si la caja de texto está vacía, entonces nos muestra todos los resultados.
+            tablaClub.setModel(gesConn.consultaClub());
+         }
+    }//GEN-LAST:event_botonBCMousePressed
+
+    private void botonIPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIPMousePressed
+        //Botón de insertar perro. Necesitamos obtener las variables correspondientes de los textboxes.
+        int chip = Integer.valueOf(cajaChip.getText());
+        String nombre = cajaNombreP.getText();
+        String afijo= cajaAfijo.getText();
+        String raza= cajaRaza.getText();
+        String sexo= cajaSexo.getText();
+        String nac= cajaNac.getText();
+        String deporte= cajaDeporte.getText();
+        String grado= cajaGrado.getText();
+        String prop= cajaProp.getText();
+        //Guardamos el valor que nos devuelve la función en un int para poder mostrar el mensaje en función de
+        //si se ha insertado correctamente el perro o no.
+        int ejecutaInsert=gesConn.insertaPerro(chip, nombre, afijo, raza, sexo, deporte, nac, grado, prop);
+        //Si el perro se inserta correctamente, llamamos de nuevo a consultaPerros para que nos saque los datos por pantalla refrescados.
+        if(ejecutaInsert==1){
+           mensajePerro.setText("El perro se ha insertado correctamente.");
+           tablaPerros.setModel(gesConn.consultaPerros());
+           //Ponemos las cajas con sus valores a cero.
+           cajaChip.setText("");
+           cajaNombreP.setText("");
+           cajaAfijo.setText("");
+           cajaRaza.setText("");
+           cajaSexo.setText("");
+           cajaNac.setText("");
+           cajaDeporte.setText("");
+           cajaGrado.setText("");
+           cajaProp.setText("");
+           
+        }else if(ejecutaInsert==-1){
+           mensajePerro.setText("No se ha podido insertar el registro en la Base de Datos!");
+        }
+    }//GEN-LAST:event_botonIPMousePressed
+
+    private void botonISMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonISMousePressed
+        //Inserción de un nuevo socio en la tabla propietario
+        //Obtenemos los valores a insertar de las cajas en el interfaz gráfico.
+        String dni= cajaDNI.getText();
+        String nombre= cajaNombreS.getText();
+        String apellidos= cajaApellidoS.getText();
+        String direccion= cajaDirS.getText();
+        int telefono= Integer.valueOf(cajaTelefonoS.getText());
+        int club= Integer.valueOf(cajaClub.getText());
+        //Guardamos el valor que nos devuelve la función en una variable int.
+        int ejecutaInsert= gesConn.insertaProp(dni, nombre, apellidos, direccion, telefono, club);
+        //Si se ha ejecutado correctamente.
+        if(ejecutaInsert==1){
+            jLabel16.setText("El usuario se ha insertado correctamente.");
+            tablaSocios.setModel(gesConn.consultaProp());
+            //Ponemos las cajas con sus valores a cero.
+            cajaDNI.setText("");
+            cajaNombreS.setText("");
+            cajaApellidoS.setText("");
+            cajaDirS.setText("");
+            cajaTelefonoS.setText("");
+            cajaClub.setText("");
+            
+        }else if(ejecutaInsert==-1){
+            jLabel16.setText("No se ha podido insertar el registro en la Base de Datos!");
+        }
+    }//GEN-LAST:event_botonISMousePressed
+
+    private void botonICMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonICMousePressed
+        //Inserción de un nuevo club. Obtenemos los valores de las cajas correspondientes.
+        int CIF= Integer.valueOf(cajaCif.getText());
+        String nombre= cajaNombreC.getText();
+        String direccion= cajaDirC.getText();
+        int telefono= Integer.valueOf(cajaTelefonoC.getText());
+        //guardamos el valor que nos devuelve en una variable int.
+        int ejecutaInsert=gesConn.insertaClub(CIF, nombre, direccion, telefono);
+        //Comprobamos si la ejecución se ha hecho correctamente.
+        if(ejecutaInsert==1){
+           jLabel17.setText("El club se ha insertado correctamente.");
+           tablaClub.setModel(gesConn.consultaClub());
+           //Ponemos las cajas en vacío de nuevo.
+           cajaCif.setText("");
+           cajaNombreC.setText("");
+           cajaDirC.setText("");
+           cajaTelefonoC.setText("");
+        }else if(ejecutaInsert==-1){
+           jLabel17.setText("No se ha podido insertar el registro en la Base de Datos!");
+        }
+        
+    }//GEN-LAST:event_botonICMousePressed
+
+    private void tablaClubMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClubMousePressed
+        //Método que nos va a permitir obtener los datos directamente de la tabla y sacarlos por los jTextFields.
+        int row= tablaClub.getSelectedRow(); //Obtenemos la tupla seleccionada.
+        //Con ella obtenemos los valores de las diferentes celdas.
+        String CIF= tablaClub.getModel().getValueAt(row, 0).toString();
+        String nombre= tablaClub.getModel().getValueAt(row, 1).toString();
+        String direccion= tablaClub.getModel().getValueAt(row, 2).toString();
+        String telefono= tablaClub.getModel().getValueAt(row, 0).toString();
+        //Sacamos esos valores a través de las cajas.
+        cajaCif.setText(CIF);
+        cajaNombreC.setText(nombre);
+        cajaDirC.setText(direccion);
+        cajaTelefonoC.setText(telefono);
+    }//GEN-LAST:event_tablaClubMousePressed
 
     /**
      * @param args the command line arguments
@@ -671,34 +895,18 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField cajaSexo;
     private javax.swing.JTextField cajaTelefonoC;
     private javax.swing.JTextField cajaTelefonoS;
-    private javax.swing.JComboBox<String> desplegableCub;
+    private javax.swing.JComboBox<String> desplegableClub;
     private javax.swing.JComboBox<String> desplegablePerro;
-    private javax.swing.JComboBox<String> desplegablePerro2;
-    private javax.swing.JComboBox<String> desplegablePerro3;
     private javax.swing.JComboBox<String> desplegableSocio;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
@@ -713,42 +921,17 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField46;
     private javax.swing.JTextField jTextField56;
+    private javax.swing.JLabel mensajePerro;
     private javax.swing.JPanel panelClub;
     private javax.swing.JPanel panelPerros;
-    private javax.swing.JPanel panelPerros2;
-    private javax.swing.JPanel panelPerros3;
     private javax.swing.JPanel panelProp;
     private javax.swing.JTable tablaClub;
     private javax.swing.JTable tablaPerros;
