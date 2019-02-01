@@ -60,7 +60,7 @@ public class Conexiones {
     //Select * de la tabla Perros, que nos va a mostrar por pantalla. Consulta no parametrizada.
     public DefaultTableModel consultaPerros(){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
-         DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario"}, 0);
+         DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario", "DNI"}, 0);
          
         try{
            //Creamos el statement para poder ejecutar la consulta.
@@ -80,8 +80,9 @@ public class Conexiones {
                 String deporte=rs.getString("deporte");
                 String grado=rs.getString("grado");
                 String prop= rs.getString("pr.nombre") + " " + rs.getString("pr.apellidos");
+                String dni=rs.getString("DNI");
                 //insertamos los datos en el model que nos va a devolver, creando una tupla.
-                 model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop});
+                 model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop, dni});
               }
             //Cerramos el statement y el resultset.
             rs.close();
@@ -100,7 +101,7 @@ public class Conexiones {
     
     public DefaultTableModel consultaPerroPS(String consulta, String parametro){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
-         DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo", "Nacimiento","Deporte", "Grado", "Propietario"}, 0);
+         DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo", "Nacimiento","Deporte", "Grado", "Propietario", "DNI"}, 0);
          
         try{
            //Creamos un objeto PreparedStatement para ejecutar la consulta.
@@ -120,14 +121,56 @@ public class Conexiones {
                 String deporte=rs.getString("deporte");
                 String grado=rs.getString("grado");
                 String prop= rs.getString("pr.nombre") + " " + rs.getString("pr.apellidos");
+                String dni=rs.getString("DNI");
                 //insertamos los datos en el model que nos va a devolver, creando una tupla.
-                 model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop});
+                 model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop, dni});
               }
               //Cerramos el prepares statement y el resultset.
               rs.close();
               pst.close();
               
             
+        }catch(SQLException ex){
+          System.out.println("ERROR:al consultar");
+          ex.printStackTrace();
+        }
+        //Devolvemos el model.
+        return model;
+  
+     }
+    
+    //Consulta perro con nombre y apellido como parámetro
+    
+    public DefaultTableModel consultaPerrosNA(String parametro){
+         //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
+         DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario", "DNI"}, 0);
+         
+        try{
+           //Creamos el statement para poder ejecutar la consulta.
+           Statement sta = conn.createStatement();
+           //Ejecutamos la consulta.
+           ResultSet rs = sta.executeQuery("SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND (pr.nombre LIKE '"+parametro+"' OR pr.apellidos LIKE '"+parametro+"')");
+
+           //recorremos la tabla
+           
+              while(rs.next()){
+                String chip=String.valueOf(rs.getInt("chip"));
+                String nombreP=rs.getString("p.nombre");
+                String afijo=rs.getString("afijo");
+                String raza=rs.getString("raza");
+                String sexo=rs.getString("sexo");
+                String nac=String.valueOf(rs.getObject("nacimiento"));
+                String deporte=rs.getString("deporte");
+                String grado=rs.getString("grado");
+                String prop= rs.getString("pr.nombre") + " " + rs.getString("pr.apellidos");
+                String dni=rs.getString("DNI");
+                //insertamos los datos en el model que nos va a devolver, creando una tupla.
+                 model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop,dni});
+              }
+            //Cerramos el statement y el resultset.
+            rs.close();
+            sta.close();
+              
         }catch(SQLException ex){
           System.out.println("ERROR:al consultar");
           ex.printStackTrace();
@@ -198,7 +241,7 @@ public class Conexiones {
     //Select * de la tabla propietarios. No parametrizada.
     public DefaultTableModel consultaProp(){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
-         DefaultTableModel model = new DefaultTableModel(new String[]{"DNI", "Nombre", "Apellidos", "Dirección", "Teléfono", "Club"}, 0);
+         DefaultTableModel model = new DefaultTableModel(new String[]{"DNI", "Nombre", "Apellidos", "Dirección", "Teléfono", "Club", "CIF"}, 0);
          
         try{
            //Creamos el statement para poder ejecutar la consulta.
@@ -215,8 +258,9 @@ public class Conexiones {
                 String dir=rs.getString("direccion");
                 String telefono=String.valueOf(rs.getInt("telefono"));
                 String club=rs.getString("c.nombre");
+                String cif=String.valueOf(rs.getInt("CIF"));
                 //insertamos los datos en el model que nos va a devolver, creando una tupla.
-                 model.addRow(new Object[]{DNI, nombreP, apellidos,dir,telefono,club});
+                 model.addRow(new Object[]{DNI, nombreP, apellidos,dir,telefono,club,cif});
               }
             //Cerramos el statement y el resultset.  
             rs.close();
@@ -234,7 +278,7 @@ public class Conexiones {
     //Consulta PreparedStatement
      public DefaultTableModel consultaPropPR(String consulta, String parametro){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
-         DefaultTableModel model = new DefaultTableModel(new String[]{"DNI", "Nombre", "Apellidos", "Dirección", "Teléfono", "Club"}, 0);
+         DefaultTableModel model = new DefaultTableModel(new String[]{"DNI", "Nombre", "Apellidos", "Dirección", "Teléfono", "Club", "CIF"}, 0);
          
         try{
            //Creamos un objeto PreparedStatement para ejecutar la consulta.
@@ -251,8 +295,9 @@ public class Conexiones {
                 String dir=rs.getString("direccion");
                 String telefono=String.valueOf(rs.getInt("telefono"));
                 String club=rs.getString("c.nombre");
+                String cif=String.valueOf(rs.getInt("CIF"));
                 //insertamos los datos en el model que nos va a devolver, creando una tupla.
-                 model.addRow(new Object[]{DNI, nombreP, apellidos,dir,telefono,club});
+                 model.addRow(new Object[]{DNI, nombreP, apellidos,dir,telefono,club,cif});
               }
             //Cerramos el statement y el resultset.  
             rs.close();
@@ -267,35 +312,6 @@ public class Conexiones {
   
      }
      
-     //Consulta para sacar el DNI del propietario con intención de poder modificarlo en la tabla perro.
-     
-     public String dniProp(String nombre, String apellido){
-
-           //Variable donde vamos a guardar el valor obtenido de la query.
-           String dni = null;
-            
-         try{
-             
-            //Creamos el statement para poder ejecutar la consulta.
-            Statement sta = conn.createStatement();
-           //Ejecutamos la consulta.
-            ResultSet rs = sta.executeQuery("SELECT dni FROM propietario WHERE nombre='"+nombre+"' AND apellidos='"+apellido+"'");
-            //Devolvemos el resultado de la query. Hay que procesarlo en un while porque no me lo cogía directamente, aunque
-            //fuese un único valor.
-            while(rs.next()){
-                dni=rs.getString("dni");
-            } 
-            //Cerramos el statement y el resultset.
-            rs.close();
-            sta.close();
-            //Devolvemos el string con el valor obtenido de la consulta.
-            return dni;
-            
-         }catch(SQLException ex){
-            return "ERROR!";
-         }
-          
-     }
      
      //INSERTA NUEVO PROPIETARIO/SOCIO EN LA TABLA PROPIETARIO.
      
@@ -421,34 +437,6 @@ public class Conexiones {
         //Devolvemos el model.
         return model;
   
-     }
-    
-    //Vamos a obtener el CIF de un club usando su nombre como parámetro de entrada.
-    public String cifClub(String nombre){
-           //Variable donde vamos a guardar el valor obtenido de la query.
-           String cif = null;
-            
-         try{
-             
-            //Creamos el statement para poder ejecutar la consulta.
-            Statement sta = conn.createStatement();
-           //Ejecutamos la consulta.
-            ResultSet rs = sta.executeQuery("SELECT cif FROM club WHERE nombre='"+nombre+"'");
-            //Devolvemos el resultado de la query. Hay que procesarlo en un while porque no me lo cogía directamente, aunque
-            //fuese un único valor.
-            while(rs.next()){
-                cif=rs.getString("cif");
-            } 
-            //Cerramos el statement y el resultset.
-            rs.close();
-            sta.close();
-            //Devolvemos el string con el valor obtenido de la consulta.
-            return cif;
-            
-         }catch(SQLException ex){
-            return "ERROR!";
-         }
-          
      }
     
     //INSERCIÖN DE UN NUEVO CLUB
