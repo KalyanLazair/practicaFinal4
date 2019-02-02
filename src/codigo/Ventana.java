@@ -5,6 +5,11 @@
  */
 package codigo;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JComboBox;
+
+
 /**
  *
  * @author Marta
@@ -32,8 +37,30 @@ public class Ventana extends javax.swing.JFrame {
         botonCP.setVisible(false);
         botonCS.setVisible(false);
         botonCC.setVisible(false);
+        //Ponemos la caja del año a false.
+        jCheckBox1.setVisible(false);
+        //Vamos a añadir un itemlistener para saber qué elemento ha sido seleccionado.
+        desplegablePerro.addItemListener(new ItemListener(){
+            
+            public void itemStateChanged(ItemEvent event) {
+               JComboBox desplegablePerro = (JComboBox) event.getSource();  //Obtenemos el origen del evento.
+               //Cuando detecta que un elemento ha sido seleccionado, comprueba cuál es ese elemento. Si es
+               //el elemento Nacimiento, entonces pone el checkbox de Año en visible. En caso que no sea Nacimiento
+               //el checkbox desaparece.
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    String cajaSeleccionada=(String) desplegablePerro.getSelectedItem();
+                    if(cajaSeleccionada.equals("Nacimiento")){
+                       jCheckBox1.setVisible(true);
+                    }else{
+                       jCheckBox1.setVisible(false);
+                    }
+                }
+               
+            }
+        });
         
     }
+
 
     
     
@@ -706,11 +733,12 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonMC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -788,7 +816,32 @@ public class Ventana extends javax.swing.JFrame {
                   //Reseteamos el textbox
                  cajaBuscaPerro.setText("");
              }else if(cajaSeleccionada.equals("Propietario")){
-                  tablaPerros.setModel(gesConn.consultaPerrosNA(opcion));
+                 opcion=cajaBuscaPerro.getText(); //Obtenemos el texto de la caja.
+                 int longitud= opcion.length(); //Obtenemos la longitud del texto
+                 String nombre="";
+                 String apellido="";
+                 boolean espacioDetectado=false; //Para saber si hemos detectado un espacio o no.
+                    //Procesamos usando un bucle for para saber si detectamos un espacio en blanco. Si lo hay es un
+                    //nombre y apellido. Separamos el nombre y apellido en substrings que introducimos como párametro.
+                    //También ponemos el booleano a true para saber que hemos encontrado un nombre y un apellido.
+                 for(int i=0; i<longitud; i++){
+                   if(opcion.charAt(i)==' '){
+                      nombre= "%"+opcion.substring(0,i)+"%";
+                      apellido= "%"+opcion.substring(i+1)+"%";
+                      espacioDetectado=true;
+                   }
+                 } 
+                 //Si el booleano está a false, el valor de nombre y apellido es el texto que encontramos en la caja (no hay espacio)
+                 if(espacioDetectado==false){
+                     nombre="%"+cajaBuscaPerro.getText()+"%";
+                     apellido="%"+cajaBuscaPerro.getText()+"%"; 
+                     tablaPerros.setModel(gesConn.consultaPerrosNA(nombre, apellido));
+                 }else{  //Si el booleano está a true, ejecutamos con los substrings que hemos obtenido del bucle, y ponemos el booleano a false
+                   tablaPerros.setModel(gesConn.consultaPerrosNA(nombre, apellido));
+                   espacioDetectado=false;
+                 }
+                  
+                  
              }else if(cajaSeleccionada.equals("Nacimiento")){
                 opcion=cajaBuscaPerro.getText();
                 if(jCheckBox1.isSelected()){

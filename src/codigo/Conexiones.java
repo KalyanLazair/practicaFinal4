@@ -139,9 +139,9 @@ public class Conexiones {
   
      }
     
-    //Consulta perro con nombre y apellido como parámetro
     
-    public DefaultTableModel consultaPerrosNA(String parametro){
+    //Consulta perro pasándole nombre y apellido como parámetro para las búsquedas donde se introduzca tanto nombre como apellido.
+      public DefaultTableModel consultaPerrosNA(String nombre, String apellido){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
          DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario", "DNI"}, 0);
          
@@ -149,7 +149,7 @@ public class Conexiones {
            //Creamos el statement para poder ejecutar la consulta.
            Statement sta = conn.createStatement();
            //Ejecutamos la consulta.
-           ResultSet rs = sta.executeQuery("SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND (pr.nombre LIKE '"+parametro+"' OR pr.apellidos LIKE '"+parametro+"')");
+           ResultSet rs = sta.executeQuery("SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND (pr.nombre LIKE '"+nombre+"' OR pr.apellidos LIKE '"+apellido+"')");
 
            //recorremos la tabla
            
@@ -179,6 +179,7 @@ public class Conexiones {
         return model;
   
      }
+    
     
     //Edición sobre la tabla perro. Inserción de datos.
     
