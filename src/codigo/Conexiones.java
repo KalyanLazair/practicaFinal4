@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Conexiones {
     //Conexión.
-    Connection conn= null;
+    Connection conn;
     
     //Constructor de la clase Conexiones que nos va a permitir establecer la conexión con la base de datos en MySQL.
     public Conexiones(){
@@ -33,6 +33,8 @@ public class Conexiones {
            //La clase DiverManager tiene un método getConnection que nos va a establecer la conexión
            //cuando le pasamos los parámetros de entrada url, user y password.
            conn = (Connection) DriverManager.getConnection(url1, user, password);
+           //Si la conexión se establece (es distinto de null), nos saca por consola el mensaje de que está conectada.
+           //En caso contrario nos muestra por consola un mensaje de error.
              if (conn != null) {
                System.out.println("Conectado a deportes.");
              }
@@ -63,13 +65,15 @@ public class Conexiones {
          DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario", "DNI"}, 0);
          
         try{
-           //Creamos el statement para poder ejecutar la consulta.
+           //Creamos el statement para poder ejecutar la consulta. Es lo que envía comandos SQL a la base de datos.
            Statement sta = conn.createStatement();
-           //Ejecutamos la consulta.
+           //Ejecutamos la consulta. Usamos el método executeQuery de Ststement y guardamos el resultado en el resultSet.
            ResultSet rs = sta.executeQuery("SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI;");
 
-           //recorremos la tabla
-           
+           //recorremos la tabla usando el método next de ResultSet, que se mueve a través de los registros almacenados en RS.
+           //ResultSet es un conjunto ordenado de filas en una tabla.
+           //Con los métodos get de ResultSet podemos obtener los valores de los distintos atributos y almacenarlos en variables
+           //que luego vamos a procesar con el model para poder sacarlo por el jTable.
               while(rs.next()){
                 String chip=String.valueOf(rs.getInt("chip"));
                 String nombreP=rs.getString("p.nombre");
@@ -84,7 +88,7 @@ public class Conexiones {
                 //insertamos los datos en el model que nos va a devolver, creando una tupla.
                  model.addRow(new Object[]{chip, nombreP, afijo,raza,sexo,nac,deporte,grado,prop, dni});
               }
-            //Cerramos el statement y el resultset.
+            //Cerramos el statement y el resultset para evitar errores.
             rs.close();
             sta.close();
               
@@ -97,20 +101,24 @@ public class Conexiones {
   
      }
     
-    //Consulta con preparedStatement al que le vamos a pasar parámetros de entrada.
-    
+    //Consulta con preparedStatement al que le vamos a pasar parámetros de entrada.   
     public DefaultTableModel consultaPerroPS(String consulta, String parametro){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
          DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo", "Nacimiento","Deporte", "Grado", "Propietario", "DNI"}, 0);
          
         try{
-           //Creamos un objeto PreparedStatement para ejecutar la consulta.
+           //Creamos un objeto PreparedStatement para ejecutar la consulta. Se precompila la consulta para dejarla preparada
+           //para recibir los valores de los parámetros.
             PreparedStatement pst = conn.prepareStatement(consulta);
             //Le pasamos los parámetros a la consulta.
             pst.setString(1,parametro);
-            //Ejecutamos la consulta.
+            //Ejecutamos la consulta y guardamos el resultado en el ResultSet.
             ResultSet rs = pst.executeQuery();
-            //Procesamos los resultados.
+            
+            //recorremos la tabla usando el método next de ResultSet, que se mueve a través de los registros almacenados en RS.
+           //ResultSet es un conjunto ordenado de filas en una tabla.
+           //Con los métodos get de ResultSet podemos obtener los valores de los distintos atributos y almacenarlos en variables
+           //que luego vamos a procesar con el model para poder sacarlo por el jTable.
               while(rs.next()){
                 String chip=String.valueOf(rs.getInt("chip"));
                 String nombreP=rs.getString("p.nombre");
@@ -138,9 +146,9 @@ public class Conexiones {
         return model;
   
      }
-    
-    
-    //Consulta perro pasándole nombre y apellido como parámetro para las búsquedas donde se introduzca tanto nombre como apellido.
+        
+    //Consulta perro pasándole nombre y apellido de propietario como parámetro para las búsquedas donde 
+    //se introduzca el nombre, el apellido o ambos.
       public DefaultTableModel consultaPerrosNA(String nombre, String apellido){
          //Creamos un objeto DefaultTableModel que nos va a permitir insertar los datos en el jTable.
          DefaultTableModel model = new DefaultTableModel(new String[]{"Chip", "Nombre", "Afijo", "Raza", "Sexo","Nacimiento", "Deporte", "Grado", "Propietario", "DNI"}, 0);
@@ -148,10 +156,13 @@ public class Conexiones {
         try{
            //Creamos el statement para poder ejecutar la consulta.
            Statement sta = conn.createStatement();
-           //Ejecutamos la consulta.
+           //Ejecutamos la consulta usando el método executeQuery.
            ResultSet rs = sta.executeQuery("SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND (pr.nombre LIKE '"+nombre+"' OR pr.apellidos LIKE '"+apellido+"')");
 
-           //recorremos la tabla
+            //recorremos la tabla usando el método next de ResultSet, que se mueve a través de los registros almacenados en RS.
+           //ResultSet es un conjunto ordenado de filas en una tabla.
+           //Con los métodos get de ResultSet podemos obtener los valores de los distintos atributos y almacenarlos en variables
+           //que luego vamos a procesar con el model para poder sacarlo por el jTable.
            
               while(rs.next()){
                 String chip=String.valueOf(rs.getInt("chip"));
@@ -188,7 +199,7 @@ public class Conexiones {
              try{
                  //Creamos un statement.
                  Statement sta = conn.createStatement();
-                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 //Ejecutamos la inserción. Lo hacemos a través de un executeUpdate.
                  sta.executeUpdate("INSERT INTO perro VALUES ("+chip+", '"+nombre+"','"+afijo+"','"+raza+"','"+sexo+"','"+nacimiento+"','"+deporte+"','"+grado+"','"+prop+"')");
                  //Cerramos el statement
                  sta.close();
@@ -206,7 +217,7 @@ public class Conexiones {
              try{
                  //Creamos un statement.
                  Statement sta = conn.createStatement();
-                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 //Ejecutamos la inserción. Lo hacemos a través de un executeUpdate.
                  sta.executeUpdate("DELETE FROM perro WHERE chip="+chip+"");
                  //Cerramos el statement
                  sta.close();
@@ -224,7 +235,7 @@ public class Conexiones {
              try{
                  //Creamos un statement.
                  Statement sta = conn.createStatement();
-                 //Ejecutamos la inserción. LO hacemos a través de un executeUpdate.
+                 //Ejecutamos la inserción. Lo hacemos a través de un executeUpdate.
                  sta.executeUpdate("UPDATE perro SET chip="+chip+", nombre='"+nombre+"', afijo='"+afijo+"', raza='"+raza+"', sexo='"+sexo+"', nacimiento='"+nac+"', deporte='"+deporte+"', grado='"+grado+"', propietario='"+prop+"' WHERE chip="+chip+"");
                  //Cerramos el statement
                  sta.close();
@@ -250,7 +261,10 @@ public class Conexiones {
            //Ejecutamos la consulta.
            ResultSet rs = sta.executeQuery("SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club;");
 
-           //recorremos la tabla
+           //recorremos la tabla usando el método next de ResultSet, que se mueve a través de los registros almacenados en RS.
+           //ResultSet es un conjunto ordenado de filas en una tabla.
+           //Con los métodos get de ResultSet podemos obtener los valores de los distintos atributos y almacenarlos en variables
+           //que luego vamos a procesar con el model para poder sacarlo por el jTable.
            
               while(rs.next()){
                 String DNI=rs.getString("dni");
@@ -382,7 +396,10 @@ public class Conexiones {
            //Ejecutamos la consulta.
            ResultSet rs = sta.executeQuery("SELECT * FROM club;");
 
-           //recorremos la tabla
+           //recorremos la tabla usando el método next de ResultSet, que se mueve a través de los registros almacenados en RS.
+           //ResultSet es un conjunto ordenado de filas en una tabla.
+           //Con los métodos get de ResultSet podemos obtener los valores de los distintos atributos y almacenarlos en variables
+           //que luego vamos a procesar con el model para poder sacarlo por el jTable.
            
               while(rs.next()){
                 String CIF=String.valueOf(rs.getInt("CIF"));

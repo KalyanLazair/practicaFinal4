@@ -101,6 +101,7 @@ public class Ventana extends javax.swing.JFrame {
         mensajePerro = new javax.swing.JLabel();
         botonCP = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel15 = new javax.swing.JLabel();
         panelProp = new javax.swing.JPanel();
         desplegableSocio = new javax.swing.JComboBox<>();
         cajaBuscaS = new javax.swing.JTextField();
@@ -150,6 +151,8 @@ public class Ventana extends javax.swing.JFrame {
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        panelPerros.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         tablaPerros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -168,8 +171,11 @@ public class Ventana extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaPerros);
 
+        panelPerros.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 62, 870, 249));
+
         desplegablePerro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         desplegablePerro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chip", "Nombre", "Afijo", "Raza", "Deporte", "Grado", "Nacimiento", "Sexo", "Propietario" }));
+        panelPerros.add(desplegablePerro, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 13, 151, 27));
 
         botonBP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBP.setText("Buscar");
@@ -178,48 +184,69 @@ public class Ventana extends javax.swing.JFrame {
                 botonBPMousePressed(evt);
             }
         });
+        panelPerros.add(botonBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 11, 137, 29));
+        panelPerros.add(cajaBuscaPerro, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 14, 209, 27));
 
         jTextField2.setBackground(new java.awt.Color(0, 51, 153));
+        panelPerros.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 329, 948, 6));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Número de Chip;");
+        panelPerros.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 353, 128, 29));
+        panelPerros.add(cajaChip, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 355, 162, 27));
+        panelPerros.add(cajaNombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 417, 162, 27));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombre;");
+        panelPerros.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 415, 128, 27));
+        panelPerros.add(cajaAfijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 470, 162, 27));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Afijo;");
+        panelPerros.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 128, 27));
+        panelPerros.add(cajaProp, new org.netbeans.lib.awtextra.AbsoluteConstraints(762, 474, 162, 27));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Propietario;");
+        panelPerros.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(624, 474, 128, 27));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Raza;");
+        panelPerros.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 353, 128, 27));
+        panelPerros.add(cajaRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 355, 162, 27));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Sexo;");
+        panelPerros.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 415, 128, 27));
+        panelPerros.add(cajaSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 417, 162, 27));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Nacimiento;");
+        panelPerros.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 474, 128, 27));
 
         cajaNac.setText("2001-01-20");
+        panelPerros.add(cajaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 474, 162, 27));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Deporte;");
+        panelPerros.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 358, 128, -1));
+        panelPerros.add(cajaDeporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(758, 355, 162, 27));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Grado;");
+        panelPerros.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 415, 128, 27));
 
         cajaGrado.setText("Brevet/1/2/3");
+        panelPerros.add(cajaGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(758, 415, 162, 27));
 
         botonMP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMP.setText("Modificar");
@@ -228,6 +255,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonMPMousePressed(evt);
             }
         });
+        panelPerros.add(botonMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 548, 144, 30));
 
         botonIP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIP.setText("Insertar");
@@ -236,8 +264,11 @@ public class Ventana extends javax.swing.JFrame {
                 botonIPMousePressed(evt);
             }
         });
+        panelPerros.add(botonIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 548, 148, 30));
 
         jTextField12.setBackground(new java.awt.Color(0, 51, 153));
+        panelPerros.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 519, 948, 6));
+        panelPerros.add(mensajePerro, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 543, 376, 35));
 
         botonCP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonCP.setText("Cancelar");
@@ -246,6 +277,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonCPMousePressed(evt);
             }
         });
+        panelPerros.add(botonCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 548, 144, 30));
 
         jCheckBox1.setText("AÑO");
         jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,145 +285,24 @@ public class Ventana extends javax.swing.JFrame {
                 jCheckBox1MousePressed(evt);
             }
         });
+        panelPerros.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(718, 16, -1, -1));
 
-        javax.swing.GroupLayout panelPerrosLayout = new javax.swing.GroupLayout(panelPerros);
-        panelPerros.setLayout(panelPerrosLayout);
-        panelPerrosLayout.setHorizontalGroup(
-            panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jTextField12)
-            .addGroup(panelPerrosLayout.createSequentialGroup()
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(panelPerrosLayout.createSequentialGroup()
-                        .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPerrosLayout.createSequentialGroup()
-                                .addGap(197, 197, 197)
-                                .addComponent(desplegablePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaBuscaPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonBP, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox1))
-                            .addGroup(panelPerrosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaChip, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelPerrosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(cajaNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4))
-                    .addGroup(panelPerrosLayout.createSequentialGroup()
-                        .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPerrosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cajaAfijo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(panelPerrosLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(botonMP, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonCP, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(mensajePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cajaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerrosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
-        panelPerrosLayout.setVerticalGroup(
-            panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPerrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desplegablePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaBuscaPerro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaChip, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cajaRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cajaDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cajaGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaAfijo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPerrosLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cajaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cajaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelPerrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonMP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonIP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mensajePerro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jLabel15.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGO_RSCE (1).png"))); // NOI18N
+        jLabel15.setText("jLabel15");
+        jLabel15.setMaximumSize(new java.awt.Dimension(50, 50));
+        jLabel15.setMinimumSize(new java.awt.Dimension(50, 50));
+        jLabel15.setPreferredSize(new java.awt.Dimension(50, 56));
+        panelPerros.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Perros", panelPerros);
 
+        panelProp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         desplegableSocio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         desplegableSocio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Nombre", "Apellidos", "Club" }));
+        panelProp.add(desplegableSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 13, 151, 27));
+        panelProp.add(cajaBuscaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 14, 209, 27));
 
         botonBS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBS.setText("Buscar");
@@ -400,6 +311,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonBSMousePressed(evt);
             }
         });
+        panelProp.add(botonBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 11, 137, 29));
 
         tablaSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -419,33 +331,49 @@ public class Ventana extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaSocios);
 
+        panelProp.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 60, 870, 249));
+
         jTextField14.setBackground(new java.awt.Color(0, 51, 153));
+        panelProp.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 327, 948, 6));
+        panelProp.add(cajaDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 373, 162, 27));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("DNI;");
+        panelProp.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 376, 65, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Nombre;");
+        panelProp.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 371, 77, 27));
+        panelProp.add(cajaNombreS, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 373, 162, 27));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Apellidos;");
+        panelProp.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 371, 128, 27));
+        panelProp.add(cajaApellidoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 373, 162, 27));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Club;");
+        panelProp.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 449, 128, -1));
+        panelProp.add(cajaClub, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 446, 162, 27));
+        panelProp.add(cajaTelefonoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 446, 162, 27));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Teléfono;");
+        panelProp.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 444, 128, 27));
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Dirección;");
+        panelProp.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 449, 128, -1));
+        panelProp.add(cajaDirS, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 446, 162, 27));
 
         jTextField44.setBackground(new java.awt.Color(0, 51, 153));
+        panelProp.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 521, 948, 6));
 
         botonMS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMS.setText("Modificar");
@@ -454,6 +382,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonMSMousePressed(evt);
             }
         });
+        panelProp.add(botonMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 550, 144, 30));
 
         botonIS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIS.setText("Insertar");
@@ -462,6 +391,8 @@ public class Ventana extends javax.swing.JFrame {
                 botonISMousePressed(evt);
             }
         });
+        panelProp.add(botonIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 548, 148, 30));
+        panelProp.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 545, 404, 35));
 
         botonCS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonCS.setText("Cancelar");
@@ -470,114 +401,16 @@ public class Ventana extends javax.swing.JFrame {
                 botonCSMousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelPropLayout = new javax.swing.GroupLayout(panelProp);
-        panelProp.setLayout(panelPropLayout);
-        panelPropLayout.setHorizontalGroup(
-            panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jTextField44)
-            .addGroup(panelPropLayout.createSequentialGroup()
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPropLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelPropLayout.createSequentialGroup()
-                                .addComponent(desplegableSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(cajaBuscaS, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(botonBS, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(220, 220, 220))
-                            .addGroup(panelPropLayout.createSequentialGroup()
-                                .addComponent(botonMS, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonCS, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelPropLayout.createSequentialGroup()
-                        .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPropLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelPropLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(panelPropLayout.createSequentialGroup()
-                                        .addComponent(cajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelPropLayout.createSequentialGroup()
-                                        .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelPropLayout.createSequentialGroup()
-                                        .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelPropLayout.createSequentialGroup()
-                                        .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 314, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelPropLayout.setVerticalGroup(
-            panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPropLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desplegableSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaBuscaS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaNombreS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaApellidoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(cajaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29)
-                    .addComponent(cajaDirS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaTelefonoS, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelPropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonMS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonIS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        panelProp.add(botonCS, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 550, 144, 30));
 
         jTabbedPane1.addTab("Socios", panelProp);
 
+        panelClub.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         desplegableClub.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         desplegableClub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CIF", "Nombre" }));
+        panelClub.add(desplegableClub, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 14, 151, 27));
+        panelClub.add(cajaBuscaClub, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 15, 209, 27));
 
         botonBC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonBC.setText("Buscar");
@@ -586,6 +419,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonBCMousePressed(evt);
             }
         });
+        panelClub.add(botonBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 12, 137, 29));
 
         tablaClub.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -605,25 +439,37 @@ public class Ventana extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tablaClub);
 
+        panelClub.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 60, 870, 249));
+
         jTextField46.setBackground(new java.awt.Color(0, 51, 153));
+        panelClub.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 327, 948, 6));
+        panelClub.add(cajaCif, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 360, 162, 27));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("CIF;");
+        panelClub.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 360, 128, 27));
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel34.setText("Dirección;");
+        panelClub.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 458, 128, 27));
+        panelClub.add(cajaDirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 460, 162, 27));
+        panelClub.add(cajaTelefonoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(674, 457, 162, 27));
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel37.setText("Teléfono;");
+        panelClub.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 458, 128, 27));
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel38.setText("Nombre;");
+        panelClub.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 363, 128, -1));
+        panelClub.add(cajaNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(674, 360, 162, 27));
 
         jTextField56.setBackground(new java.awt.Color(0, 51, 153));
+        panelClub.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 522, 948, 6));
 
         botonMC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonMC.setText("Modificar");
@@ -632,6 +478,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonMCMousePressed(evt);
             }
         });
+        panelClub.add(botonMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 550, 144, 30));
 
         botonIC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonIC.setText("Insertar");
@@ -640,6 +487,8 @@ public class Ventana extends javax.swing.JFrame {
                 botonICMousePressed(evt);
             }
         });
+        panelClub.add(botonIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 548, 148, 30));
+        panelClub.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 548, 385, 32));
 
         botonCC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonCC.setText("Cancelar");
@@ -648,99 +497,7 @@ public class Ventana extends javax.swing.JFrame {
                 botonCCMousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelClubLayout = new javax.swing.GroupLayout(panelClub);
-        panelClub.setLayout(panelClubLayout);
-        panelClubLayout.setHorizontalGroup(
-            panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField46, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jTextField56)
-            .addGroup(panelClubLayout.createSequentialGroup()
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelClubLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelClubLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(desplegableClub, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(cajaBuscaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(botonBC, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelClubLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelClubLayout.createSequentialGroup()
-                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(cajaDirC, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelClubLayout.createSequentialGroup()
-                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaCif, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(127, 127, 127)
-                        .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panelClubLayout.createSequentialGroup()
-                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelClubLayout.createSequentialGroup()
-                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(panelClubLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(botonMC, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonCC, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelClubLayout.setVerticalGroup(
-            panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelClubLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desplegableClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaBuscaClub, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaCif, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel38)
-                        .addComponent(cajaNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelClubLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cajaDirC, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelClubLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(cajaTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 3, Short.MAX_VALUE)))
-                .addGap(35, 35, 35)
-                .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonMC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        panelClub.add(botonCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 548, 144, 32));
 
         jTabbedPane1.addTab("Club", panelClub);
 
@@ -748,7 +505,7 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -760,25 +517,32 @@ public class Ventana extends javax.swing.JFrame {
 
     private void botonBPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBPMousePressed
         //Botón de búsqueda de perro donde se va a ejecutar una consulta en función de la caja seleccionada.
-        //Lo primero que hacemos es poner el mensaje de la caja en un string vacío.
+        //Lo primero que hacemos es poner el mensaje de la caja en un string vacío. Esta es la caja de la
+        //parte de abajo del programa donde aparecen mensajes. En caso que se haya usado se tiene que retornar
+        //a su estado inicial.
         mensajePerro.setText("");
-        botonIP.setText("Insertar"); //Ponemos el botón también de vuelta a insertar en caso de haber cambiado.
+        botonIP.setText("Insertar"); //Ponemos el botón también de vuelta a insertar en caso de haber cambiado a borrar.
+        cambiaBoton=false; //en caso de que haya podido estar usándose.
+        
         //Obtenemos el objeto seleccionado del jComboBox y lo casteamos a string.
         String cajaSeleccionada=(String) desplegablePerro.getSelectedItem();
-        String opcion="%"+cajaBuscaPerro.getText()+"%";
-        String consulta="";
+        String opcion="%"+cajaBuscaPerro.getText()+"%"; //Obtenemos el texto de la caja de texto.
+        String consulta=""; //Declaramos un string donde vamos a guardar la consulta que pasaremos como parámetro de entrada.
         
         //Si el textarea no está vacío, ejecutamos una consulta con prepared Statement.
+        //Esto lo hacemos para que, en caso en que la caja esté vacía, nos haga un Select de toda la tabla y nos
+        //saque los resultados por el jTable.
         if(!cajaBuscaPerro.getText().equals("")){
              if(cajaSeleccionada.equals("Chip")){
-                 //Le cambiamos la consulta a un valor absoluto para evitar problemas con la consulta equivalente.
+                 //Le cambiamos la opción (parámetro) a un valor absoluto para evitar problemas con la consulta equivalente. 
+                 //Es decir, que si ponemos el chip 10 no nos salgan todos los que contengan un 1 o un 0.
                  opcion=cajaBuscaPerro.getText();
-                 //Le pasamos la consulta como parámetro de entrada a la función.
+                 //Guardamos la consulta que vamos a pasar como parámetro de entrada en una variable String.
                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND chip= ?";
                  //Ejecutamos la función y lo guardamos en la tabla.
                   tablaPerros.setModel(gesConn.consultaPerroPS(consulta, opcion));
                   //Reseteamos el textbox
-                 cajaBuscaPerro.setText("");
+                  cajaBuscaPerro.setText("");
              }else if(cajaSeleccionada.equals("Nombre")){
                  consulta="SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND p.nombre LIKE ?";
                  //Ejecutamos la función y lo guardamos en la tabla.
@@ -819,7 +583,7 @@ public class Ventana extends javax.swing.JFrame {
                  opcion=cajaBuscaPerro.getText(); //Obtenemos el texto de la caja.
                  int longitud= opcion.length(); //Obtenemos la longitud del texto
                  String nombre="";
-                 String apellido="";
+                 String apellido=""; 
                  boolean espacioDetectado=false; //Para saber si hemos detectado un espacio o no.
                     //Procesamos usando un bucle for para saber si detectamos un espacio en blanco. Si lo hay es un
                     //nombre y apellido. Separamos el nombre y apellido en substrings que introducimos como párametro.
@@ -831,7 +595,8 @@ public class Ventana extends javax.swing.JFrame {
                       espacioDetectado=true;
                    }
                  } 
-                 //Si el booleano está a false, el valor de nombre y apellido es el texto que encontramos en la caja (no hay espacio)
+                 //Si el booleano está a false, el valor de nombre y apellido es el texto que encontramos en la caja (no hay espacio).
+                 //Si sólo se busca por nombre, por ejemplo, el valor de las variables nombre y apellido serán el mismo.
                  if(espacioDetectado==false){
                      nombre="%"+cajaBuscaPerro.getText()+"%";
                      apellido="%"+cajaBuscaPerro.getText()+"%"; 
@@ -850,34 +615,38 @@ public class Ventana extends javax.swing.JFrame {
                    consulta= "SELECT * FROM perro p, propietario pr WHERE p.propietario=pr.DNI AND YEAR(nacimiento) < ?";
                 }
                 //Ejecutamos la función y lo guardamos en la tabla.
-                System.out.println(consulta);
                   tablaPerros.setModel(gesConn.consultaPerroPS(consulta, opcion));
-                  //Reseteamos el textbox
-                 cajaBuscaPerro.setText("");
+                  //Reseteamos el textbox y los botones.
+                 cajaBuscaPerro.setText(""); 
+                 botonMP.setVisible(false);
+                 botonCP.setVisible(false);
              }
             
         }else{
-            //Si nos encontramos con una cadena vacía en el textbox, ejecuta una consulta y muestra todos los resultados de la bbdd
-            //en la tabla.
+            //Si nos encontramos con una cadena vacía en el textbox, ejecuta una consulta SELECT * y nos muestra todos los resultados
+            //de la tabla en el jTable.
             tablaPerros.setModel(gesConn.consultaPerros());
+            botonMP.setVisible(false);
+            botonCP.setVisible(false);
         }
         
-        //Ponemos loas jTextFields a cadena vacía por si hubiesen estado usándose.
+        //Restauramos los jTextFields a su estado inicial por si hubiesen estado usándose.
                      cajaChip.setText("");
                      cajaNombreP.setText("");
                      cajaAfijo.setText("");
                      cajaRaza.setText("");
                      cajaSexo.setText("");
-                     cajaNac.setText("");
+                     cajaNac.setText("2001-01-21");
                      cajaDeporte.setText("");
-                     cajaGrado.setText("");
+                     cajaGrado.setText("Brevet/1/2/3");
                      cajaProp.setText("");
     }//GEN-LAST:event_botonBPMousePressed
 
     private void botonBSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBSMousePressed
          //Botón cosultas Prepared Statement en la tabla propietarios.
          jLabel16.setText(""); //Ponemos el jLabel a cadena vacía.
-         botonIS.setText("Insertar");
+         botonIS.setText("Insertar"); //Restauramos el botón insertar por si se hubiese estado usando.
+         cambiaBoton=false; //En caso de que haya podido estar usándose.
          //
          String cajaSeleccionada=(String) desplegableSocio.getSelectedItem(); //Obtenemos cual de las opciones ha sido seleccionada.
          String consulta="";
@@ -887,6 +656,7 @@ public class Ventana extends javax.swing.JFrame {
          if(!cajaBuscaS.getText().equals("")){
              //La consulta dependerá de la caja seleccionada
              if(cajaSeleccionada.equals("DNI")){
+                 parametro= cajaBuscaS.getText(); //Ponemos un valor absoluto para pasarlo como parámetro en la búsqueda.
                 consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND DNI LIKE ?";
              }else if(cajaSeleccionada.equals("Nombre")){
                  consulta="SELECT * FROM propietario pr, club c WHERE c.CIF=pr.club AND pr.nombre LIKE ?";
@@ -897,10 +667,14 @@ public class Ventana extends javax.swing.JFrame {
              }
             //Sacamos el resultado por la tabla.
              tablaSocios.setModel(gesConn.consultaPropPR(consulta, parametro));
-             //Reseteamos la caja.
+             //Reseteamos la caja y los botones que hayan podido usarse.
              cajaBuscaS.setText("");
-         }else{
+             botonMS.setVisible(false);
+             botonCS.setVisible(false);
+         }else{ //Si el jTextField es una cadena vacía nos hace una consulta general y nos saca todos los registros de la tabla.
              tablaSocios.setModel(gesConn.consultaProp());
+             botonMS.setVisible(false);
+             botonCS.setVisible(false);
          }
          
          //Ponemos los jTextFields a cadena vacía por si hubiesen estado usándose
@@ -917,21 +691,27 @@ public class Ventana extends javax.swing.JFrame {
         //Botón de búsqueda de Club por prepared Statement.
         jLabel17.setText(""); //Ponemos el jLabel a cadena vacía.
         botonIC.setText("Insertar"); //Restauramos también el botón.
+        cambiaBoton=false; //En caso de que haya podido estar usándose.
         //Obtenemos el objeto seleccionado del jComboBox.
         String cajaSeleccionada = (String) desplegableClub.getSelectedItem(); //Casteamos a String porque jComboBox no nos genera un String.
         String consulta="";
         String parametro="%"+cajaBuscaClub.getText()+"%";
         
-         if(!cajaBuscaClub.getText().equals("")){ //Si la caja de texto no está vacía, ejecuta.
+         if(!cajaBuscaClub.getText().equals("")){ //Si la caja de texto no está vacía, ejecuta el preparedStatement.
             if(cajaSeleccionada.equals("CIF")){
+                parametro= cajaBuscaClub.getText(); //En parametro metemos un valor absoluto para que la búsqueda sea exacta.
                 consulta="SELECT * FROM club WHERE CIF LIKE ?";
             }else if(cajaSeleccionada.equals("Nombre")){
                 consulta="SELECT * FROM club WHERE nombre LIKE ?";
             }
             tablaClub.setModel(gesConn.consultaClubPS(consulta, parametro));
-            cajaBuscaClub.setText(""); //Vacíamos la caja y la volvemos a poner en cadena vacía
+            cajaBuscaClub.setText(""); //Restauramos los valores de la caja y los botones que podrían haberse usado.
+            botonMC.setVisible(false);
+            botonCC.setVisible(false);
          }else{ //Si la caja de texto está vacía, entonces nos muestra todos los resultados.
             tablaClub.setModel(gesConn.consultaClub());
+            botonMC.setVisible(false);
+            botonCC.setVisible(false);
          }
          
          //Ponemos los jTextFields a cadena vacía por si hubiesen estado usándose.
@@ -954,6 +734,7 @@ public class Ventana extends javax.swing.JFrame {
         String prop= cajaProp.getText();
         
            //Vamos a comprobar el valor del booleano. Insertará o borrará dependiendo de ese valor.
+           //Cambia botón adquiere valor cuando clickeamos en una tupla de la tabla.
            if(cambiaBoton==false){
                //Guardamos el valor que nos devuelve la función en un int para poder mostrar el mensaje en función de
                //si se ha insertado correctamente el perro o no.
@@ -963,35 +744,35 @@ public class Ventana extends javax.swing.JFrame {
                 if(ejecutaInsert==1){
                       mensajePerro.setText("El perro se ha insertado correctamente.");
                       tablaPerros.setModel(gesConn.consultaPerros());
-                     //Ponemos las cajas con sus valores a cero.
+                     //Ponemos las cajas con sus valores iniciales.
                      cajaChip.setText("");
                      cajaNombreP.setText("");
                      cajaAfijo.setText("");
                      cajaRaza.setText("");
                      cajaSexo.setText("");
-                     cajaNac.setText("");
+                     cajaNac.setText("2001-01-21");
                      cajaDeporte.setText("");
-                     cajaGrado.setText("");
+                     cajaGrado.setText("Brevet/1/2/3");
                      cajaProp.setText("");
            
                 }else if(ejecutaInsert==-1){
                     mensajePerro.setText("No se ha podido insertar el registro en la Base de Datos!");
                 }
            }else{
-               int borraRegistro= gesConn.borraPerro(chip);
+               int borraRegistro= gesConn.borraPerro(chip); //Llamamos a la función de borrar pasándole el chip como parámetro de entrada.
                
                if(borraRegistro==1){
                    mensajePerro.setText("El registro se ha borrado correctamente.");
-                   tablaPerros.setModel(gesConn.consultaPerros());
-                     //Ponemos las cajas con sus valores a cero.
+                   tablaPerros.setModel(gesConn.consultaPerros()); //Hacemos una consultaPerros para que nos saque los valores actualizados.
+                     //Ponemos las cajas con sus valores iniciales.
                      cajaChip.setText("");
                      cajaNombreP.setText("");
                      cajaAfijo.setText("");
                      cajaRaza.setText("");
                      cajaSexo.setText("");
-                     cajaNac.setText("");
+                     cajaNac.setText("2001-01-21");
                      cajaDeporte.setText("");
-                     cajaGrado.setText("");
+                     cajaGrado.setText("Brevet/1/2/3");
                      cajaProp.setText("");
                      //Ponemos el booleano a false.
                      cambiaBoton=false;
@@ -1007,9 +788,9 @@ public class Ventana extends javax.swing.JFrame {
                      cajaAfijo.setText("");
                      cajaRaza.setText("");
                      cajaSexo.setText("");
-                     cajaNac.setText("");
+                     cajaNac.setText("2001-01-21");
                      cajaDeporte.setText("");
-                     cajaGrado.setText("");
+                     cajaGrado.setText("Brevet/1/2/3");
                      cajaProp.setText("");
                      //Ponemos el booleano a false. De esta manera, funcione o no funcione el borrado, el booleano no se queda con
                      //valor a true y el usuario está obligado a clickear de nuevo en la tabla para iniciar de nuevo la función.
@@ -1030,14 +811,15 @@ public class Ventana extends javax.swing.JFrame {
         
         
         //Comprobamos el valor del booleano. Para saber si insertamos (false) o borramos (true).
+        //Este valor lo adquiere al hacer click sobre una tupla de la tabla.
         if(cambiaBoton==false){
             //Guardamos el valor que nos devuelve la función en una variable int.
             int ejecutaInsert= gesConn.insertaProp(dni, nombre, apellidos, direccion, telefono, club);
             //Si se ha ejecutado correctamente.
              if(ejecutaInsert==1){
                     jLabel16.setText("El usuario se ha insertado correctamente.");
-                    tablaSocios.setModel(gesConn.consultaProp());
-                    //Ponemos las cajas con sus valores a cero.
+                    tablaSocios.setModel(gesConn.consultaProp()); //Sacamos los valores actualizados.
+                    //Ponemos las cajas con sus valores iniciales.
                     cajaDNI.setText("");
                     cajaNombreS.setText("");
                     cajaApellidoS.setText("");
@@ -1049,11 +831,11 @@ public class Ventana extends javax.swing.JFrame {
                     jLabel16.setText("No se ha podido insertar el registro en la Base de Datos!");
               }
         }else{
-           int borraRegistro=gesConn.borraProp(dni);
+           int borraRegistro=gesConn.borraProp(dni); //Si el booleano está a true, llamamos a borrar.
            if(borraRegistro==1){
                 jLabel16.setText("El registro se ha borrado correctamente.");
-                tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla.
-                    //Ponemos las cajas con sus valores a cero.
+                tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla con los valores actualizados.
+                    //Ponemos las cajas con sus valores iniciales.
                     cajaDNI.setText("");
                     cajaNombreS.setText("");
                     cajaApellidoS.setText("");
@@ -1069,7 +851,7 @@ public class Ventana extends javax.swing.JFrame {
                 
            }else if(borraRegistro==-1){
                 jLabel16.setText("No se ha podido borrar el registro.");
-                //Ponemos las cajas con sus valores a cero.
+                //Ponemos las cajas con sus valores iniciales.
                     cajaDNI.setText("");
                     cajaNombreS.setText("");
                     cajaApellidoS.setText("");
@@ -1097,8 +879,8 @@ public class Ventana extends javax.swing.JFrame {
             //Comprobamos si la ejecución se ha hecho correctamente.
             if(ejecutaInsert==1){
                 jLabel17.setText("El club se ha insertado correctamente.");
-                tablaClub.setModel(gesConn.consultaClub());
-                //Ponemos las cajas en vacío de nuevo.
+                tablaClub.setModel(gesConn.consultaClub()); //Restauramos la tabla con valores actualizados.
+                //Ponemos las cajas en sus valores iniciales..
                 cajaCif.setText("");
                 cajaNombreC.setText("");
                 cajaDirC.setText("");
@@ -1107,11 +889,11 @@ public class Ventana extends javax.swing.JFrame {
                 jLabel17.setText("No se ha podido insertar el registro en la Base de Datos!");
             }
         }else{
-            int borraRegistro=gesConn.borraClub(CIF);
+            int borraRegistro=gesConn.borraClub(CIF); //Si el booleano es true, llamamos a la función de borrar.
             
             if(borraRegistro==1){
                 jLabel17.setText("El registro se ha borrado correctamente.");
-                tablaClub.setModel(gesConn.consultaClub()); //Hacemos un reload de la tabla.
+                tablaClub.setModel(gesConn.consultaClub()); //Hacemos un reload de la tabla con los valores actualizados..
                 //Ponemos las cajas en vacío de nuevo.
                 cajaCif.setText("");
                 cajaNombreC.setText("");
@@ -1226,7 +1008,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaSociosMousePressed
 
     private void botonMPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMPMousePressed
-        //Botón de modificar perro. Lo primero que vamos a hacer es poner el booleano a false.
+        //Botón de modificar perro. Lo primero que vamos a hacer es poner el booleano a false para que no dé problemas.
         cambiaBoton=false;
         //Obtenemos de los textfields los valores que vamos a modificar.
         int chip = Integer.valueOf(cajaChip.getText());
@@ -1244,16 +1026,16 @@ public class Ventana extends javax.swing.JFrame {
         //Comprobamos si se ha modificado correctamente. 
         if(ejecutaMod==1){
            mensajePerro.setText("El registro se ha modificado correctamente.");
-           tablaPerros.setModel(gesConn.consultaPerros());
-           //Ponemos las cajas con sus valores a cero.
+           tablaPerros.setModel(gesConn.consultaPerros()); //Sacamos de nuevo la tabla con los valores actualizados.
+           //Ponemos las cajas con sus valores iniciales.
            cajaChip.setText("");
            cajaNombreP.setText("");
            cajaAfijo.setText("");
            cajaRaza.setText("");
            cajaSexo.setText("");
-           cajaNac.setText("");
+           cajaNac.setText("2001-01-21");
            cajaDeporte.setText("");
-           cajaGrado.setText("");
+           cajaGrado.setText("Brevet/1/2/3");
            cajaProp.setText("");
            //Ocultamos de nuevo los botones.
            botonMP.setVisible(false);
@@ -1281,8 +1063,8 @@ public class Ventana extends javax.swing.JFrame {
         
         if(ejecutaMod==1){
             jLabel16.setText("El registro se ha modificado correctamente.");
-            tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla.
-            //Ponemos las cajas con sus valores a cero.
+            tablaSocios.setModel(gesConn.consultaProp()); //Recargamos la tabla con los valores actualizados.
+            //Ponemos las cajas con sus valores iniciales.
             cajaDNI.setText("");
             cajaNombreS.setText("");
             cajaApellidoS.setText("");
@@ -1315,13 +1097,13 @@ public class Ventana extends javax.swing.JFrame {
         
         if(ejecutaMod==1){
               jLabel17.setText("El registro se ha modificado correctamente.");
-              tablaClub.setModel(gesConn.consultaClub());
+              tablaClub.setModel(gesConn.consultaClub()); //Restauramos la tabla con los valores actualizados.
               //Ponemos las cajas en vacío de nuevo.
               cajaCif.setText("");
               cajaNombreC.setText("");
               cajaDirC.setText("");
               cajaTelefonoC.setText("");
-              //Ocultamos de nuevo el botón.
+              //Ocultamos de nuevo los botones.
               botonMC.setVisible(false);
               botonCC.setVisible(false);
               //El botón de borrar vuelve a insertar
@@ -1339,15 +1121,15 @@ public class Ventana extends javax.swing.JFrame {
         cambiaBoton=false;
         //Ponemos el texto del botón de insertar de vuelta a insertar.
         botonIP.setText("Insertar");
-         //Ponemos las cajas con sus valores a cero.
+         //Ponemos las cajas con sus valores iniciales.
         cajaChip.setText("");
         cajaNombreP.setText("");
         cajaAfijo.setText("");
         cajaRaza.setText("");
         cajaSexo.setText("");
-        cajaNac.setText("");
+        cajaNac.setText("2001-01-21");
         cajaDeporte.setText("");
-        cajaGrado.setText("");
+        cajaGrado.setText("Brevet/1/2/3");
         cajaProp.setText("");
     }//GEN-LAST:event_botonCPMousePressed
 
@@ -1359,7 +1141,7 @@ public class Ventana extends javax.swing.JFrame {
         cambiaBoton=false;
         //Ponemos el texto del botón de insertar de vuelta a insertar.
         botonIS.setText("Insertar");
-        //Ponemos las cajas con sus valores a cero.
+        //Ponemos las cajas con sus valores iniciales.
         cajaDNI.setText("");
         cajaNombreS.setText("");
         cajaApellidoS.setText("");
@@ -1376,7 +1158,7 @@ public class Ventana extends javax.swing.JFrame {
         cambiaBoton=false;
         //Ponemos el texto del botón de insertar de vuelta a insertar.
         botonIC.setText("Insertar");
-        //Ponemos las cajas en vacío de nuevo.
+        //Ponemos las cajascon sus valores iniciales.
         cajaCif.setText("");
         cajaNombreC.setText("");
         cajaDirC.setText("");
@@ -1384,11 +1166,11 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCCMousePressed
 
     private void jCheckBox1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MousePressed
-        //Caja checkbox.
+        //Caja checkbox. Cambia el texto en función de si está seleccionada o no.
         if(jCheckBox1.isSelected()){
-           jCheckBox1.setText("Año; Menor qué");
+           jCheckBox1.setText("Año; Anterior A");
         }else{
-           jCheckBox1.setText("Año; Mayor qué");
+           jCheckBox1.setText("Año; Posterior A");
         }
     }//GEN-LAST:event_jCheckBox1MousePressed
 
@@ -1472,6 +1254,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
